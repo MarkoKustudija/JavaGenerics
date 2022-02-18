@@ -6,56 +6,45 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /** football players */
-//        FootballPlayer footballPlayer = new FootballPlayer("Tom Brady");
 
+        League<Team<SoccerPlayer>> premierLeague = new League<>("Premier League");
 
         /** soccer players */
-        SoccerPlayer soccerPlayer = new SoccerPlayer("Ronaldo");
+        SoccerPlayer soccerPlayer1 = new SoccerPlayer("Ronaldo");
         SoccerPlayer soccerPlayer2 = new SoccerPlayer("Salah");
         SoccerPlayer soccerPlayer3 = new SoccerPlayer("Kane");
-        SoccerPlayer soccerPlayer4 = new SoccerPlayer("Jota");
+        SoccerPlayer soccerPlayer4 = new SoccerPlayer("Lacazete");
 
-        /** basketball players */
-//        BasketballPlayer basketballPlayer = new BasketballPlayer("Curry");
-
-//        Team<FootballPlayer> footballTeam1 = new Team<>("New England Patriots");
-//        Team<FootballPlayer> footballTeam2 = new Team<>("LA Rams") ;
-//        footballTeam1.addPlayer(footballPlayer);
-
-        /** results */
-//        footballTeam1.matchResult(footballTeam2,24,34);
-//        footballTeam2.matchResult(footballTeam1,34,24);
-
-//        System.out.println("Number of players on the team: " + footballTeam1.numOfPlayers());
-
-        System.out.println();
+        /** teams */
         Team<SoccerPlayer> liverpool = new Team<>("Liverpool");
         Team<SoccerPlayer> arsenal = new Team<>("Arsenal");
         Team<SoccerPlayer> spurs = new Team<>("Tottenham");
-        liverpool.addPlayer(soccerPlayer);
+        Team<SoccerPlayer> mun_utd = new Team<>("Mun Utd");
+
+        mun_utd.addPlayer(soccerPlayer1);
         liverpool.addPlayer(soccerPlayer2);
         spurs.addPlayer(soccerPlayer3);
         arsenal.addPlayer(soccerPlayer4);
-
+        System.out.println();
+        System.out.println("Table:");
+        premierLeague.addTeam(liverpool);
+        premierLeague.addTeam(arsenal);
+        premierLeague.addTeam(spurs);
+        premierLeague.addTeam(mun_utd);
+        premierLeague.showLeagueTable();
+        System.out.println();
         liverpool.matchResult(arsenal, 1,0);
         arsenal.matchResult(liverpool,0,0);
         spurs.matchResult(arsenal,3,0);
-
-        System.out.println("Number of players on the team Liverpool: " + liverpool.numOfPlayers());
-        System.out.println("Number of players on the team Arsenal: " + arsenal.numOfPlayers());
-        System.out.println("Rankings for soccer clubs: ");
-        System.out.println(liverpool.getName() + ": " + liverpool.ranking() + " points.");
-        System.out.println(arsenal.getName() + ": " + arsenal.ranking() + " points.");
-        System.out.println(spurs.getName() + ": " + spurs.ranking() + " points.");
-        System.out.println(liverpool.compareTo(spurs));
-        System.out.println(spurs.compareTo(liverpool));
-
-//        System.out.println();
-//        Team<BasketballPlayer> basketTeam = new Team<>("Brooklyn Nets");
-//        basketTeam.addPlayer(basketballPlayer);
-//        System.out.println("Number of players on the team: " + basketTeam.numOfPlayers());
-
+        mun_utd.matchResult(spurs,2,0);
+        System.out.println();
+        System.out.println("Table after 2nd round: ");
+        premierLeague.showLeagueTable();
+        System.out.println();
+        System.out.println("Number of players on " + liverpool.getName() + ": " + liverpool.numOfPlayers());
+        System.out.println("Number of players on " + arsenal.getName() + ": " + arsenal.numOfPlayers());
+        System.out.println("Number of players on " + spurs.getName() + ": " + spurs.numOfPlayers());
+        System.out.println("Number of players on " + mun_utd.getName() + ": " + mun_utd.numOfPlayers());
 
     }
 }
